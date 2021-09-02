@@ -2,6 +2,7 @@
 body {
     background-image: url("/images/background.png");
     color: white;
+    text-align: center;
 }
 
 a {
@@ -9,10 +10,17 @@ a {
 }
 
 .heading {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.heading h1 {
     font-family: 'Love Ya Like A Sister', cursive;
-    color: white;
     font-size: 4rem;
+    padding: 1vh;
     margin: 0;
+    width: fit-content;
     text-align: center;
 }
 
@@ -23,6 +31,7 @@ a {
 .score {
     display: flex;
     justify-content: space-between;
+    margin: 5vh 5vw;
 }
 
 .score-head {
@@ -36,4 +45,152 @@ a {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: white;
     font-size: 2rem;
+}
+
+.levels {
+    font-family: 'Love Ya Like A Sister', cursive;
+    font-size: 2rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.levels div {
+    border: 2px solid #b5b5b5;
+    width: fit-content;
+    border-radius: 14px;
+    padding: 1.5vh 7vw;
+    margin: 3vh;
+}
+
+
+/* .levels div:hover {
+    background: #ffffff29;
+    font-size: smaller;
+    padding: 2vh 7vw;
+} */
+
+.footer {
+    font-family: 'Merriweather', cursive;
+    padding: 1.5vh;
+    background: #ffffff0a;
+    font-size: 1rem;
+}
+
+.levels div {
+    position: relative;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: all 1s;
+}
+
+.levels div:after,
+.levels div:before {
+    content: " ";
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    border: 0px solid #fff;
+    transition: all 1s;
+}
+
+.levels div:after {
+    top: -1px;
+    left: -1px;
+    border-top: 5px solid black;
+    border-left: 5px solid black;
+}
+
+.levels div:before {
+    bottom: -1px;
+    right: -1px;
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+}
+
+.levels div:hover {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    background: #ffffff29;
+}
+
+.levels div:hover:before,
+.levels div:hover:after {
+    width: 100%;
+    height: 100%;
+}
+
+.score-head:hover,
+.footer:hover {
+    -webkit-mask-image: linear-gradient(-75deg, rgba(0, 0, 0, .6) 30%, #000 50%, rgba(0, 0, 0, .6) 70%);
+    -webkit-mask-size: 200%;
+    animation: shine 2s infinite;
+}
+
+@-webkit-keyframes shine {
+    from {
+        -webkit-mask-position: 150%;
+    }
+    to {
+        -webkit-mask-position: -50%;
+    }
+}
+
+.score-number {
+    position: relative;
+    display: block;
+    text-transform: uppercase;
+    margin: 10px 0;
+    text-decoration: none;
+    color: #262626;
+    font-weight: 600;
+    transition: 0.5s;
+    z-index: 1;
+}
+
+.score-number:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-top: 2px solid #acacac71;
+    border-bottom: 2px solid #acacac71;
+    transform: scaleY(2);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.score-number:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #acacac71;
+    transform: scale(0);
+    opacity: 0;
+    transition: 0.3s;
+    z-index: -1;
+}
+
+.score-number:hover {
+    color: #fff;
+}
+
+.score-number:hover:before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.score-number:hover:after {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.heading h1:hover {
+    color: #ffffffab;
 }

@@ -1,7 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab&family=Londrina+Outline&family=Love+Ya+Like+A+Sister&family=Merriweather&display=swap');
 body {
     background-image: url("/images/background.png");
+    color: white;
 }
 
 a {
     color: #00B7FF;
+}
+
+.heading {
+    font-family: 'Love Ya Like A Sister', cursive;
+    color: white;
+    font-size: 4rem;
+    margin: 0;
+    text-align: center;
+}
+
+.heading-img {
+    width: 45px;
+}
+
+.score {
+    display: flex;
+    justify-content: space-between;
+}
+
+.score-head {
+    font-family: 'Merriweather', serif;
+    font-size: 1rem;
+}
+
+.score-number {
+    font-family: 'Londrina Outline', cursive;
+    text-align: center;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: white;
+    font-size: 2rem;
 }

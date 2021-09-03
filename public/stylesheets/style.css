@@ -34,6 +34,10 @@ a {
     right: 25px;
 }
 
+.rules{
+    background-image: url("/images/background.png");
+}
+
 .score {
     display: flex;
     justify-content: space-between;

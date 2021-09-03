@@ -28,6 +28,12 @@ a {
     width: 45px;
 }
 
+.info {
+    position: absolute;
+    bottom: 60px;
+    right: 25px;
+}
+
 .score {
     display: flex;
     justify-content: space-between;

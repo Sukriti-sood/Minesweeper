@@ -28,6 +28,37 @@ a {
     width: 45px;
 }
 
+.info {
+    position: absolute;
+    bottom: 60px;
+    right: 25px;
+}
+
+.modal-dialog {
+    max-width: 850px;
+    margin: 2rem auto;
+    height: 40%;
+}
+
+.modal-content {
+    height: 50%;
+    border: 1px solid;
+    font-family: 'Love Ya Like A Sister', cursive;
+}
+
+.modal-header {
+    border-bottom: 0;
+}
+
+.modal-rule{
+    font-family: 'Josefin Slab';
+    font-size: 1.25rem;
+}
+
+.rules{
+    background-image: url("/images/background.png");
+}
+
 .score {
     display: flex;
     justify-content: space-between;

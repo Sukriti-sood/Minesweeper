@@ -35,6 +35,10 @@ a {
     text-align: center;
 }
 
+.top {
+    cursor: pointer;
+}
+
 .heading-img {
     width: 45px;
 }
@@ -43,6 +47,7 @@ a {
     position: absolute;
     bottom: 60px;
     right: 25px;
+    cursor: pointer;
 }
 
 .modal-dialog {

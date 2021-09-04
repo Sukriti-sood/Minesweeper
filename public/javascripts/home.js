@@ -40,8 +40,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     loginmodal.style.display = "none";
-    for (var i = 0; i < levels.length; i++) {
-        var level = levels[i];
+    for (let i = 0; i < levels.length; i++) {
+        const level = levels[i];
 
         if (!payload) {
             level.addEventListener("click", () => {

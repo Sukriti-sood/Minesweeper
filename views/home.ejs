@@ -12,7 +12,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
-
+    <script src="https://websdk.sawolabs.com/sawo.min.js"></script>
+    <script src="/javascripts/home.js"></script>
     <link rel="stylesheet" href="/stylesheets/style.css">
 
     <!-- CSS only -->
@@ -24,8 +25,18 @@
     <!-- heading -->
     <div class="heading">
         <h1>Mineswee<img class="heading-img" src="/images/flag.png" alt="" />er</h1>
+
     </div>
 
+    <!-- login icon -->
+    <div class="login-icon" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Login">
+        <i class="fas fa-sign-in-alt fa-lg"></i>
+    </div>
+
+    <!-- login user name -->
+    <div class="user-name">
+        Sweety
+    </div>
     <!-- score -->
     <div class="score">
         <div class="highest-score">
@@ -54,7 +65,7 @@
 
     <!-- info -->
 
-    <div class="info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <div class="info" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-toggle="tooltip" data-bs-placement="bottom" title="About Minesweeper">
         <i class="fas fa-info-circle fa-lg"></i>
     </div>
 
@@ -76,11 +87,27 @@
         </div>
     </div>
 
-
     <!-- footer -->
     <footer class="fixed-bottom">
         <div class="footer">Made with ❣️</div>
     </footer>
+
+    <!-- sawo login form -->
+    <div class="login-modal">
+        <div class="login-div">
+            <div id="sawo-container" style="height: 300px; width: 300px"></div>
+        </div>
+    </div>
+
+    <!-- not logedin form -->
+    <div class="please-login">
+        <div class="pl-div">
+            <button type="button" class="btn-close btn-close-white" aria-label="Close"></button>
+            <div>
+                Please Login <i class="fas fa-sign-in-alt fa-lg"></i> first
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

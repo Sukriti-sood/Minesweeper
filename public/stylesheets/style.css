@@ -227,3 +227,19 @@ a {
 .heading h1:hover {
     color: #ffffffab;
 }
+
+@media only screen and (max-width: 500px) {
+
+    .heading h1 { 
+       font-size: 2rem; 
+    }
+
+    .modal-content {
+        height: 85%;
+    }
+
+    .levels div {
+        margin: 2vh;
+    }
+ 
+}

@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     var pl_close = document.querySelector(".pl-div button");
     const payload = sessionStorage.getItem("payload");
     var loginbtn = document.querySelector(".login-icon");
+
     var username_fi = document.querySelector(".user-name");
     if (payload) {
         const payload_obj = JSON.parse(payload);
@@ -40,19 +41,23 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     loginmodal.style.display = "none";
-    for (let i = 0; i < levels.length; i++) {
-        const level = levels[i];
 
-        if (!payload) {
-            level.addEventListener("click", () => {
-                pleaseloginmodal.style.display = "flex";
-            });
-        }
-    }
-
+    // level clicks
     pl_close.addEventListener("click", () => {
         pleaseloginmodal.style.display = "none";
     });
+
+    for (let i = 0; i < levels.length; i++) {
+        const level = levels[i];
+
+        level.addEventListener("click", () => {
+            if (!payload) {
+                pleaseloginmodal.style.display = "flex";
+            }
+
+            window.location.href = "/play/" + level.className;
+        });
+    }
 
     window.onclick = function(event) {
         if (event.target == loginmodal) {

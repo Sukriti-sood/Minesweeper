@@ -75,22 +75,30 @@ a {
     background-image: url("/images/background.png");
 }
 
-.score {
+.score,
+.top-bar {
     display: flex;
     justify-content: space-between;
     margin: 5vh 5vw;
 }
 
-.score-head {
+.score-head,
+.top-head {
     font-family: 'Merriweather', serif;
     font-size: 1rem;
 }
 
-.score-number {
+.score-number,
+.top-number {
     font-family: 'Londrina Outline', cursive;
     text-align: center;
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color: white;
+    font-size: 2rem;
+}
+
+.user-wish {
+    font-family: 'Love Ya Like A Sister', cursive;
     font-size: 2rem;
 }
 

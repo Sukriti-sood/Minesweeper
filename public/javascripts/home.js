@@ -54,8 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!payload) {
                 pleaseloginmodal.style.display = "flex";
             }
-
-            window.location.href = "/play/" + level.className;
+            else {
+                window.location.href = "/play/" + level.className;
+            }
         });
     }
 

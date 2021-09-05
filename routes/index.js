@@ -9,15 +9,7 @@ router.get("/", function(req, res, next) {
 
 router.get("/play/:level", (req, res) => {
     var level = req.params.level;
-    if (level == "easy") {
-        console.log(level);
-    }
-    if (level == "medium") {
-        console.log(level);
-    }
-    if (level == "hard") {
-        console.log(level);
-    }
+    
     res.render("play", {
         level: level,
     });

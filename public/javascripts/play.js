@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     const board = document.querySelector(".board");
-    let board_width = board.clientWidth;
+    let board_width = 240;
     console.log(board_width);
     let href = window.location.href;
     let level = href.split("/").pop();
@@ -77,15 +77,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     squares[i + 1 - width].classList.contains("bomb")
                 )
                     total++;
-                if (i > width && squares[i - width].classList.contains("bomb")) total++;
+                if (i > width - 1 && squares[i - width].classList.contains("bomb"))
+                    total++;
                 if (
-                    i > width + 1 &&
+                    i > width &&
                     !isLeftEdge &&
                     squares[i - 1 - width].classList.contains("bomb")
                 )
                     total++;
                 if (
-                    i < width * width - 2 &&
+                    i < width * width - width &&
                     !isRightEdge &&
                     squares[i + 1].classList.contains("bomb")
                 )
@@ -97,13 +98,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 )
                     total++;
                 if (
-                    i < width * width - width - 2 &&
+                    i < width * width - width - 1 &&
                     !isRightEdge &&
                     squares[i + 1 + width].classList.contains("bomb")
                 )
                     total++;
                 if (
-                    i < width * width - width - 1 &&
+                    i < width * width - width &&
                     squares[i + width].classList.contains("bomb")
                 )
                     total++;
@@ -146,10 +147,18 @@ document.addEventListener("DOMContentLoaded", () => {
             let total = square.getAttribute("data"); //(number of bombs around)
             if (total != 0) {
                 square.classList.add("checked");
-                if (total == 1) square.classList.add("one");
-                if (total == 2) square.classList.add("two");
-                if (total == 3) square.classList.add("three");
-                if (total == 4) square.classList.add("four");
+                let classes = [
+                    "",
+                    "one",
+                    "two",
+                    "three",
+                    "four",
+                    "five",
+                    "six",
+                    "seven",
+                    "eight",
+                ];
+                square.classList.add(classes[total]);
                 square.innerHTML = total;
                 return;
             }
@@ -175,19 +184,19 @@ document.addEventListener("DOMContentLoaded", () => {
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
-            if (currentId > width) {
+            if (currentId > width - 1) {
                 const newId = squares[parseInt(currentId - width)].id;
                 //const newId = parseInt(currentId) -width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
-            if (currentId > width + 1 && !isLeftEdge) {
+            if (currentId > width && !isLeftEdge) {
                 const newId = squares[parseInt(currentId) - 1 - width].id;
                 //const newId = parseInt(currentId) -1 -width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
-            if (currentId < width * width - 2 && !isRightEdge) {
+            if (currentId < width * width - 1 && !isRightEdge) {
                 const newId = squares[parseInt(currentId) + 1].id;
                 //const newId = parseInt(currentId) +1   ....refactor
                 const newSquare = document.getElementById(newId);
@@ -199,13 +208,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
-            if (currentId < width * width - width - 2 && !isRightEdge) {
+            if (currentId < width * width - width - 1 && !isRightEdge) {
                 const newId = squares[parseInt(currentId) + 1 + width].id;
                 //const newId = parseInt(currentId) +1 +width   ....refactor
                 const newSquare = document.getElementById(newId);
                 click(newSquare);
             }
-            if (currentId < width * width - width - 1) {
+            if (currentId < width * width - width) {
                 const newId = squares[parseInt(currentId) + width].id;
                 //const newId = parseInt(currentId) +width   ....refactor
                 const newSquare = document.getElementById(newId);

@@ -356,15 +356,12 @@ a {
 }
 
 .board {
-    width: 250px;
-    height: 250px;
+    width: 240px!important;
+    height: 240px!important;
     display: flex;
     flex-wrap: wrap;
     background-color: #dcd6bc;
-    margin-left: 50px;
-    margin-top: 20px;
     border: 10px solid #dcd6bc;
-    margin-bottom: 10px;
 }
 
 
@@ -402,19 +399,35 @@ a {
 }
 
 .one {
-    color: #e76346;
+    color: #e74646;
 }
 
 .two {
-    color: #4199d3;
+    color: #d3a041;
 }
 
 .three {
-    color: #57da59;
+    color: #c2da57;
 }
 
 .four {
-    color: #bb41d3;
+    color: #02fdfd;
+}
+
+.five {
+    color: #265fdb;
+}
+
+.six {
+    color: rgb(155, 6, 255);
+}
+
+.seven {
+    color: #ff00d4;
+}
+
+.eight {
+    color: #030000;
 }
 
 #result {

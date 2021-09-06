@@ -403,23 +403,23 @@ a {
 }
 
 .two {
-    color: #d3a041;
+    color: #ffa702;
 }
 
 .three {
-    color: #c2da57;
+    color: #4f6100;
 }
 
 .four {
-    color: #02fdfd;
+    color: #048585;
 }
 
 .five {
-    color: #265fdb;
+    color: #1954d4;
 }
 
 .six {
-    color: rgb(155, 6, 255);
+    color: rgb(106, 11, 170);
 }
 
 .seven {
@@ -432,5 +432,5 @@ a {
 
 #result {
     margin-top: 5px;
-    color: #e76346;
+    color: #9b280f;
 }

@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let flags = 0;
     let squares = [];
     let isGameOver = false;
+    let isClick = false;
 
     function createBoard() {
         //get shuffled game array with random bombs
@@ -53,63 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
             //cntrl and left click
             square.oncontextmenu = function(e) {
                 e.preventDefault();
+                console.log("here");
                 addFlag(square);
             };
-        }
-
-        //add numbers
-        for (let i = 0; i < squares.length; i++) {
-            let total = 0;
-            const isLeftEdge = i % width === 0;
-            const isRightEdge = i % width === width - 1;
-
-            // a b c  / a + b
-            // d + e
-            // f g h
-
-            if (squares[i].classList.contains("valid")) {
-                // checking for d
-                if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains("bomb"))
-                    total++;
-                if (
-                    i > width - 1 &&
-                    !isRightEdge &&
-                    squares[i + 1 - width].classList.contains("bomb")
-                )
-                    total++;
-                if (i > width - 1 && squares[i - width].classList.contains("bomb"))
-                    total++;
-                if (
-                    i > width &&
-                    !isLeftEdge &&
-                    squares[i - 1 - width].classList.contains("bomb")
-                )
-                    total++;
-                if (
-                    i < width * width - width &&
-                    !isRightEdge &&
-                    squares[i + 1].classList.contains("bomb")
-                )
-                    total++;
-                if (
-                    i < width * width - width &&
-                    !isLeftEdge &&
-                    squares[i - 1 + width].classList.contains("bomb")
-                )
-                    total++;
-                if (
-                    i < width * width - width - 1 &&
-                    !isRightEdge &&
-                    squares[i + 1 + width].classList.contains("bomb")
-                )
-                    total++;
-                if (
-                    i < width * width - width &&
-                    squares[i + width].classList.contains("bomb")
-                )
-                    total++;
-                squares[i].setAttribute("data", total);
-            }
         }
     }
 
@@ -117,6 +64,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //add Flag with right click
     function addFlag(square) {
+        console.log("here");
+
         if (isGameOver) return;
         if (!square.classList.contains("checked") && flags < bombAmount) {
             if (!square.classList.contains("flag")) {
@@ -134,17 +83,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
     //click on square actions
     function click(square) {
-        let currentId = square.id;
+        let currentId = parseInt(square.id);
         if (isGameOver) return;
         if (
             square.classList.contains("checked") ||
             square.classList.contains("flag")
         )
             return;
+        if (!isClick && square.classList.contains("bomb")) {
+            square.classList.remove("bomb");
+            square.classList.add("valid");
+            isClick = true;
+            bombAmount--;
+            squares[currentId] = square;
+        }
         if (square.classList.contains("bomb")) {
+            console.log("here");
             gameOver(square);
         } else {
-            let total = square.getAttribute("data"); //(number of bombs around)
+            let total = check_num_bombs(currentId); //(number of bombs around)
             if (total != 0) {
                 square.classList.add("checked");
                 let classes = [
@@ -221,6 +178,58 @@ document.addEventListener("DOMContentLoaded", () => {
                 click(newSquare);
             }
         }, 10);
+    }
+
+    function check_num_bombs(i) {
+        let total = 0;
+        const isLeftEdge = i % width === 0;
+        const isRightEdge = i % width === width - 1;
+        // a b c  / a + b
+        // d + e
+        // f g h
+        if (squares[i].classList.contains("valid")) {
+            // checking for d
+            if (i > 0 && !isLeftEdge && squares[i - 1].classList.contains("bomb"))
+                total++;
+            if (
+                i > width - 1 &&
+                !isRightEdge &&
+                squares[i + 1 - width].classList.contains("bomb")
+            )
+                total++;
+            if (i > width - 1 && squares[i - width].classList.contains("bomb"))
+                total++;
+            if (
+                i > width &&
+                !isLeftEdge &&
+                squares[i - 1 - width].classList.contains("bomb")
+            )
+                total++;
+            if (
+                i < width * width - 1 &&
+                !isRightEdge &&
+                squares[i + 1].classList.contains("bomb")
+            )
+                total++;
+            if (
+                i < width * width - width &&
+                !isLeftEdge &&
+                squares[i - 1 + width].classList.contains("bomb")
+            )
+                total++;
+            if (
+                i < width * width - width - 1 &&
+                !isRightEdge &&
+                squares[i + 1 + width].classList.contains("bomb")
+            )
+                total++;
+            if (
+                i < width * width - width &&
+                squares[i + width].classList.contains("bomb")
+            )
+                total++;
+        }
+        return total;
     }
 
     function gameOver(square) {

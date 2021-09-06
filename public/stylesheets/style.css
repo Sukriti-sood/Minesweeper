@@ -35,6 +35,10 @@ a {
     text-align: center;
 }
 
+.top {
+    cursor: pointer;
+}
+
 .heading-img {
     width: 45px;
 }
@@ -43,6 +47,7 @@ a {
     position: absolute;
     bottom: 60px;
     right: 25px;
+    cursor: pointer;
 }
 
 .modal-dialog {
@@ -70,7 +75,8 @@ a {
     background-image: url("/images/background.png");
 }
 
-.score {
+.score,
+.top-bar {
     display: flex;
     justify-content: space-between;
     margin: 5vh 5vw;

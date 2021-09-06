@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const board = document.querySelector(".board");
+    let seconds = document.querySelector(".time .top-number");
+    let mines = document.querySelector("#mines-num");
 
     let user_wish = document.querySelector(".user-wish");
     let token = localStorage.getItem("token");
@@ -54,6 +56,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let squares = [];
     let isGameOver = false;
     let isClick = false;
+    let flagAmt=bombAmount;
+
+    mines.innerHTML=flagAmt;
 
     function createBoard() {
         //get shuffled game array with random bombs
@@ -85,7 +90,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     createBoard();
-    console.log(squares);
+    
+    // time
+    let counter=0;
+    setInterval(()=>{
+        if(isClick && !isGameOver){
+            seconds.innerHTML=counter;
+            console.log(counter);
+            counter++;
+        }
+    }, 1000);
+
+
     //add Flag with right click
     function addFlag(square) {
         console.log("here");
@@ -96,11 +112,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 square.classList.add("flag");
                 square.innerHTML = " 🚩";
                 flags++;
+                flagAmt--;
+                mines.innerHTML=flagAmt;
                 checkForWin();
             } else {
                 square.classList.remove("flag");
                 square.innerHTML = "";
                 flags--;
+                flagAmt++;
+                mines.innerHTML=flagAmt;
             }
         }
     }
@@ -118,6 +138,8 @@ document.addEventListener("DOMContentLoaded", () => {
             square.classList.remove("bomb");
             square.classList.add("valid");
             bombAmount--;
+            flagAmt--;
+            mines.innerHTML=flagAmt;
             squares[currentId] = square;
         }
         if (square.classList.contains("bomb")) {
@@ -255,9 +277,9 @@ document.addEventListener("DOMContentLoaded", () => {
         return total;
     }
 
+
     function gameOver(square) {
         isGameOver = true;
-
         //show ALL the bombs
         squares.forEach((square) => {
             if (square.classList.contains("bomb")) {
@@ -285,4 +307,5 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     }
+
 });

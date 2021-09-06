@@ -39,6 +39,10 @@ a {
     width: 45px;
 }
 
+#title-rule {
+    cursor: pointer;
+}
+
 .info {
     position: absolute;
     bottom: 60px;

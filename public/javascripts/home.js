@@ -3,16 +3,28 @@ document.addEventListener("DOMContentLoaded", () => {
     var loginmodal = document.querySelector(".login-modal");
     var pleaseloginmodal = document.querySelector(".please-login");
     var pl_close = document.querySelector(".pl-div button");
-    const payload = sessionStorage.getItem("payload");
     var loginbtn = document.querySelector(".login-icon");
 
+    let token = localStorage.getItem("token");
+    let username;
     var username_fi = document.querySelector(".user-name");
-    if (payload) {
-        const payload_obj = JSON.parse(payload);
+    if (token) {
         loginbtn.style.display = "none";
         username_fi.style.display = "block";
-        username_fi.innerHTML =
-            payload_obj.customFieldInputValues["username(5-9 character)"];
+        fetch("/users/token", {
+                method: "GET",
+                headers: {
+                    "x-access-token": token,
+                },
+            })
+            .then((data) => {
+                return data.json();
+            })
+            .then((response) => {
+                console.log(response.user);
+                username = response.user.username;
+                username_fi.innerHTML = username;
+            });
     }
     var config = {
         // should be same as the id of the container created on 3rd step
@@ -30,9 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
             username_fi.style.display = "block";
             username_fi.innerHTML =
                 payload.customFieldInputValues["username(5-9 character)"];
-            sessionStorage.setItem("payload", JSON.stringify(payload));
-            location.reload();
-            // Redirecting to "/success"
+            let user = {
+                username: payload.customFieldInputValues["username(5-9 character)"],
+                user_id: payload.user_id,
+                email: payload.identifier,
+            };
+
+            fetch("/users", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(user),
+                })
+                .then((res) => res.text())
+                .then((data) => {
+                    localStorage.setItem("token", data);
+                    location.reload();
+                });
         },
     };
     var sawo = new Sawo(config);
@@ -52,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const level = levels[i];
 
         level.addEventListener("click", () => {
-            if (!payload) {
+            if (!token) {
                 pleaseloginmodal.style.display = "flex";
             } else {
                 window.location.href = "/play/" + level.className;

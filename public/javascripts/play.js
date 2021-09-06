@@ -1,7 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
     const board = document.querySelector(".board");
-    let board_width = 240;
-    console.log(board_width);
+
+    setInterval(() => {
+        let board_width;
+        if (screen.width < 500) {
+            board_width = 240;
+        } else if (screen.width < 900) {
+            board_width = 400;
+        } else {
+            board_width = 600;
+        }
+    }, 100);
+
     let href = window.location.href;
     let level = href.split("/").pop();
 
@@ -23,7 +33,9 @@ document.addEventListener("DOMContentLoaded", () => {
         bombAmount = hard_flag;
         width = hard;
     }
-    let square_width = board_width / width + "px";
+    console.log(window.board_width);
+    let square_width = window.board_width / width + "px";
+
     console.log(square_width);
     let flags = 0;
     let squares = [];
@@ -39,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         for (let i = 0; i < width * width; i++) {
             const square = document.createElement("div");
+            console.log(square_width);
             square.style.width = square_width;
             square.style.height = square_width;
             square.setAttribute("id", i);
@@ -61,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     createBoard();
-
+    console.log(squares);
     //add Flag with right click
     function addFlag(square) {
         console.log("here");

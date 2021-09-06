@@ -70,8 +70,7 @@ a {
     background-image: url("/images/background.png");
 }
 
-.score,
-.top-bar {
+.score {
     display: flex;
     justify-content: space-between;
     margin: 5vh 5vw;
@@ -79,6 +78,8 @@ a {
 
 .top-bar {
     width: 100%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .score-head,
@@ -356,16 +357,15 @@ a {
 }
 
 .board {
-    width: 240px!important;
-    height: 240px!important;
+    width: 600px;
+    height: 600px;
     display: flex;
     flex-wrap: wrap;
     background-color: #dcd6bc;
     border: 10px solid #dcd6bc;
 }
 
-
-/* @media screen and (max-width: 900px) {
+@media screen and (max-width: 900px) {
     .board {
         width: 400px;
         height: 400px;
@@ -377,10 +377,13 @@ a {
         width: 250px;
         height: 250px;
     }
-} */
+}
 
 .valid {
     border: 5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
     box-sizing: border-box;
 }
@@ -390,10 +393,16 @@ a {
     background-color: #cecab7;
     border-color: #9c998d;
     box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .bomb {
     border: 5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
     box-sizing: border-box;
 }

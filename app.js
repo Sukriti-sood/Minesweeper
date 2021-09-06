@@ -7,12 +7,12 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-
+const dotenv = require("dotenv");
+dotenv.config();
 var app = express();
 app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
-const mongouri =
-    "mongodb+srv://suki_mongo:mongolearn@mflix.gsftn.mongodb.net/minesweeper?retryWrites=true&w=majority";
+const mongouri = process.env.mongouri;
 mongoose.connect(mongouri, (err) => {
     if (err) throw err;
     console.log("connected to MongoDB");

@@ -13,7 +13,7 @@ async function upsertUser(user) {
     return await generateJWT({ _id: newUser._id });
 }
 async function generateJWT(data) {
-    return await jwt.sign(data, "abc12345", { expiresIn: "7d" });
+    return await jwt.sign(data, process.env.secretorkey, { expiresIn: "7d" });
 }
 
 const AuthController = {

@@ -5,7 +5,7 @@ const loggedIn = (req, res, next) => {
     (async() => {
         const token = req.headers["x-access-token"];
         if (!token) throw new Error("Invalid Token");
-        const payload = await jwt.verify(token, "abc12345");
+        const payload = await jwt.verify(token, process.env.secretorkey);
         let user = await User.findById(payload._id);
         if (user) return user;
         else throw new Error("Invalid Token");

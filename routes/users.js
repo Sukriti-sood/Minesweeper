@@ -2,7 +2,7 @@ var express = require("express");
 var router = express.Router();
 var authController = require("../AuthController");
 var loggedIn = require("../AuthMiddleware");
-
+var User = require("../models/Score");
 /* GET users listing. */
 
 router.route("/").post((req, res, next) => {
@@ -43,4 +43,10 @@ router.get("/token", loggedIn, (req, res) => {
         console.log(err);
     }
 });
+
+router
+    .route("/score")
+    .get((req, res) => {})
+    .post((req, res) => {})
+    .patch((req, res) => {});
 module.exports = router;

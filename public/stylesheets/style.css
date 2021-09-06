@@ -79,6 +79,8 @@ a {
 .top-bar {
     width: 100%;
     display: flex;
+    box-sizing: border-box;
+    padding: 0 3vw;
     justify-content: space-between;
 }
 
@@ -365,17 +367,17 @@ a {
     border: 5px solid #dcd6bc;
 }
 
-.medium {
+.board .medium {
     width: 60px;
     height: 60px;
 }
 
-.easy {
+.board .easy {
     width: 75px;
     height: 75px;
 }
 
-.hard {
+.board .hard {
     width: 40px;
     height: 40px
 }
@@ -385,15 +387,15 @@ a {
         width: 400px;
         height: 400px;
     }
-    .medium {
+    .board .medium {
         width: 40px;
         height: 40px;
     }
-    .easy {
+    .board .easy {
         width: 50px;
         height: 50px;
     }
-    .hard {
+    .board .hard {
         width: 26.6666666667px;
         height: 26.6666666667px
     }
@@ -404,17 +406,23 @@ a {
         width: 250px;
         height: 250px;
     }
-    .medium {
+    .board .medium {
         width: 25px;
         height: 25px;
     }
-    .easy {
+    .board .easy {
         width: 31.25px;
         height: 31.25px;
     }
-    .hard {
+    .board .hard {
         width: 16.6666666667px;
         height: 16.6666666667px
+    }
+    .top-bar {
+        flex-direction: column;
+    }
+    .top-bar div {
+        margin: 3% 0;
     }
 }
 

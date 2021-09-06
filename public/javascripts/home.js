@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
             username_fi.innerHTML =
                 payload.customFieldInputValues["username(5-9 character)"];
             sessionStorage.setItem("payload", JSON.stringify(payload));
+            location.reload();
             // Redirecting to "/success"
         },
     };
@@ -53,8 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
         level.addEventListener("click", () => {
             if (!payload) {
                 pleaseloginmodal.style.display = "flex";
-            }
-            else {
+            } else {
                 window.location.href = "/play/" + level.className;
             }
         });

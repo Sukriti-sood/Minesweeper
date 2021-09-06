@@ -1,5 +1,6 @@
 var express = require("express");
 const app = require("../app");
+const session = require("express-session");
 var router = express.Router();
 
 /* GET home page. */
@@ -9,7 +10,6 @@ router.get("/", function(req, res, next) {
 
 router.get("/play/:level", (req, res) => {
     var level = req.params.level;
-    
     res.render("play", {
         level: level,
     });

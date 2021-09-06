@@ -82,6 +82,14 @@ a {
     margin: 5vh 5vw;
 }
 
+.top-bar {
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    padding: 0 3vw;
+    justify-content: space-between;
+}
+
 .score-head,
 .top-head {
     font-family: 'Merriweather', serif;
@@ -337,4 +345,154 @@ a {
     .levels div {
         margin: 2vh;
     }
+}
+
+.play {
+    width: 100%;
+    height: 97vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerr-board {
+    width: -webkit-fill-available;
+    height: calc(90vh - 150px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    width: 600px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #dcd6bc;
+    border: 5px solid #dcd6bc;
+}
+
+.board .medium {
+    width: 60px;
+    height: 60px;
+}
+
+.board .easy {
+    width: 75px;
+    height: 75px;
+}
+
+.board .hard {
+    width: 40px;
+    height: 40px
+}
+
+@media screen and (max-width: 900px) {
+    .board {
+        width: 400px;
+        height: 400px;
+    }
+    .board .medium {
+        width: 40px;
+        height: 40px;
+    }
+    .board .easy {
+        width: 50px;
+        height: 50px;
+    }
+    .board .hard {
+        width: 26.6666666667px;
+        height: 26.6666666667px
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .board {
+        width: 250px;
+        height: 250px;
+    }
+    .board .medium {
+        width: 25px;
+        height: 25px;
+    }
+    .board .easy {
+        width: 31.25px;
+        height: 31.25px;
+    }
+    .board .hard {
+        width: 16.6666666667px;
+        height: 16.6666666667px
+    }
+    .top-bar {
+        flex-direction: column;
+    }
+    .top-bar div {
+        margin: 3% 0;
+    }
+}
+
+.valid {
+    border: 5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
+    box-sizing: border-box;
+}
+
+.checked {
+    border: 2px solid;
+    background-color: #cecab7;
+    border-color: #9c998d;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bomb {
+    border: 5px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: #f5f3eb #bab7a9 #bab7a9 #fff9db;
+    box-sizing: border-box;
+}
+
+.one {
+    color: #e74646;
+}
+
+.two {
+    color: #ffa702;
+}
+
+.three {
+    color: #4f6100;
+}
+
+.four {
+    color: #048585;
+}
+
+.five {
+    color: #1954d4;
+}
+
+.six {
+    color: rgb(106, 11, 170);
+}
+
+.seven {
+    color: #ff00d4;
+}
+
+.eight {
+    color: #030000;
+}
+
+#result {
+    margin-top: 5px;
+    color: #9b280f;
 }

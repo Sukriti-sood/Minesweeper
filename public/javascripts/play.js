@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
     const board = document.querySelector(".board");
+    let payload = JSON.parse(sessionStorage.getItem("payload"));
+    let user = payload.customFieldInputValues["username(5-9 character)"];
+    let user_wish = document.querySelector(".user-wish");
 
     let href = window.location.href;
     let level = href.split("/").pop();
@@ -15,12 +18,15 @@ document.addEventListener("DOMContentLoaded", () => {
     if (level == "easy") {
         bombAmount = easy_flag;
         width = easy;
+        user_wish.innerHTML = user + ", All the Best";
     } else if (level == "medium") {
         bombAmount = medium_flag;
         width = medium;
+        user_wish.innerHTML = user + ", You can do it";
     } else {
         bombAmount = hard_flag;
         width = hard;
+        user_wish.innerHTML = user + ", Play hard";
     }
 
     let flags = 0;
@@ -90,14 +96,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!isClick && square.classList.contains("bomb")) {
             square.classList.remove("bomb");
             square.classList.add("valid");
-            isClick = true;
             bombAmount--;
             squares[currentId] = square;
         }
         if (square.classList.contains("bomb")) {
-            console.log("here");
             gameOver(square);
         } else {
+            isClick = true;
             let total = check_num_bombs(currentId); //(number of bombs around)
             if (total != 0) {
                 square.classList.add("checked");

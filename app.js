@@ -1,22 +1,13 @@
 var createError = require("http-errors");
 var express = require("express");
-var favicon = require("serve-favicon");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var mongoose = require("mongoose");
+
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-const dotenv = require("dotenv");
-dotenv.config();
-var app = express();
-app.use(favicon(path.join(__dirname, "public", "favicon.ico")));
 
-const mongouri = process.env.mongouri;
-mongoose.connect(mongouri, (err) => {
-    if (err) throw err;
-    console.log("connected to MongoDB");
-});
+var app = express();
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));

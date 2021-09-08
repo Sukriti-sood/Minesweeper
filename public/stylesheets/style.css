@@ -22,6 +22,10 @@ a {
     margin: 3%;
 }
 
+#title-rule {
+    cursor: pointer;
+}
+
 .login-icon {
     margin: 3%;
 }
